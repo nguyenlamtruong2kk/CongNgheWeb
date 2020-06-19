@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="show"></h1>
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var obj = new URLSearchParams(location.search);
+            var a = parseFloat(obj.get('a'));
+            var b = parseFloat(obj.get('b'));
+            var c = parseFloat(obj.get('c'));
+
+            var delta = b**2 - 4*a*c;
+            
+            var kq;
+            if(delta == 0){
+                kq = `Phương trình có nghiệm kép: x= ${-b/(2*a)}`;
+            }else if(delta > 0){
+                kq = `Phương trình có 2 nghiệm phân biệt:
+                        <p>x1 = ${(-b-delta)/(2*a)}</p>
+                        <p>x2 = ${(-b+delta)/(2*a)}</p>`;
+            } else {
+                kq = 'Phương trình vô nghiệm';
+            }
+
+            document.getElementById('show').innerHTML = kq;
+           
+            
+        });
+    </script>    
+</body>
+</html>
